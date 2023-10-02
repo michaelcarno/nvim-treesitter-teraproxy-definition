@@ -1,0 +1,14 @@
+# majorPatchVersion >= 114
+array<int32> crystals
+array passivitySets
+- array<int32> passivities
+- uint32 index
+- int32  masterworkBonus
+- float  itemLevel
+- float  minItemLevel
+- float  maxItemLevel
+
+array<int32> mergedPassivities
+# Note: The magic number -1000 hides individual stats
+
+
