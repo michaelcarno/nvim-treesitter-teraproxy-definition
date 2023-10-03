@@ -1,5 +1,5 @@
 {
-  "name": "treesitter-teradefinition",
+  "name": "tree-sitter-teraonlinedefinition",
   "version": "1.0.0",
   "description": "",
   "main": "bindings/node",

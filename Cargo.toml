@@ -1,10 +1,10 @@
 [package]
-name = "tree-sitter-TERA-DEFINITIONS"
-description = "TERA-DEFINITIONS grammar for the tree-sitter parsing library"
+name = "tree-sitter-teraonline-definitions"
+description = "Tera online definitions grammar for the tree-sitter parsing library"
 version = "0.0.1"
-keywords = ["incremental", "parsing", "TERA-DEFINITIONS"]
+keywords = ["incremental", "parsing", "tera online"]
 categories = ["parsing", "text-editors"]
-repository = "https://github.com/tree-sitter/tree-sitter-TERA-DEFINITIONS"
+# repository = "https://github.com/tree-sitter/tree-sitter-TERA-DEFINITIONS"
 edition = "2018"
 license = "MIT"
 

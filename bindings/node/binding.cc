@@ -4,7 +4,7 @@
 
 using namespace v8;
 
-extern "C" TSLanguage * tree_sitter_TERA_DEFINITIONS();
+extern "C" TSLanguage * tree_sitter_teraonline_definitions();
 
 namespace {
 
@@ -17,9 +17,9 @@ void Init(Local<Object> exports, Local<Object> module) {
 
   Local<Function> constructor = Nan::GetFunction(tpl).ToLocalChecked();
   Local<Object> instance = constructor->NewInstance(Nan::GetCurrentContext()).ToLocalChecked();
-  Nan::SetInternalFieldPointer(instance, 0, tree_sitter_TERA_DEFINITIONS());
+  Nan::SetInternalFieldPointer(instance, 0, tree_sitter_teraonline_definitions());
 
-  Nan::Set(instance, Nan::New("name").ToLocalChecked(), Nan::New("TERA_DEFINITIONS").ToLocalChecked());
+  Nan::Set(instance, Nan::New("name").ToLocalChecked(), Nan::New("teraonline_definitions").ToLocalChecked());
   Nan::Set(module, Nan::New("exports").ToLocalChecked(), instance);
 }
 

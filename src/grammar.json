@@ -1,5 +1,5 @@
 {
-  "name": "TERA_DEFINITIONS",
+  "name": "teraonline_definitions",
   "rules": {
     "document": {
       "type": "REPEAT",
@@ -21,11 +21,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "simple_array"
+          "name": "simpleArray"
         },
         {
           "type": "SYMBOL",
-          "name": "simple_data"
+          "name": "simpleField"
         }
       ]
     },
@@ -41,62 +41,36 @@
           "name": "identifier"
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "STRING",
-                    "value": "- "
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "pair"
-                  }
-                ]
+          "type": "REPEAT1",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "REPEAT1",
+                "content": {
+                  "type": "STRING",
+                  "value": "-"
+                }
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_value"
               }
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+            ]
+          }
         }
       ]
     },
-    "simple_data": {
+    "simpleField": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_types"
+          "name": "_simpleTypes"
         },
         {
           "type": "SYMBOL",
           "name": "identifier"
-        }
-      ]
-    },
-    "pair": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "FIELD",
-          "name": "key",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_types"
-          }
-        },
-        {
-          "type": "FIELD",
-          "name": "value",
-          "content": {
-            "type": "SYMBOL",
-            "name": "identifier"
-          }
         }
       ]
     },
@@ -112,32 +86,27 @@
           "name": "identifier"
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "STRING",
-                    "value": "- "
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "pair"
-                  }
-                ]
+          "type": "REPEAT1",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "REPEAT1",
+                "content": {
+                  "type": "STRING",
+                  "value": "-"
+                }
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_value"
               }
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+            ]
+          }
         }
       ]
     },
-    "simple_array": {
+    "simpleArray": {
       "type": "SEQ",
       "members": [
         {
@@ -171,6 +140,10 @@
       "members": [
         {
           "type": "STRING",
+          "value": "int16"
+        },
+        {
+          "type": "STRING",
           "value": "int32"
         },
         {
@@ -195,68 +168,37 @@
         },
         {
           "type": "STRING",
-          "value": "uint64"
+          "value": "uint16"
         },
         {
           "type": "STRING",
           "value": "uint32"
+        },
+        {
+          "type": "STRING",
+          "value": "uint64"
+        },
+        {
+          "type": "STRING",
+          "value": "bytes"
+        },
+        {
+          "type": "STRING",
+          "value": "byte"
+        },
+        {
+          "type": "STRING",
+          "value": "customize"
+        },
+        {
+          "type": "STRING",
+          "value": "shape"
         }
       ]
     },
-    "_types": {
-      "type": "PREC",
-      "value": -1,
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "_simpleTypes"
-          },
-          {
-            "type": "STRING",
-            "value": "object"
-          },
-          {
-            "type": "STRING",
-            "value": "array"
-          },
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "array"
-              },
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "STRING",
-                        "value": "<"
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "_simpleTypes"
-                      },
-                      {
-                        "type": "STRING",
-                        "value": ">"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
+    "types": {
+      "type": "CHOICE",
+      "members": []
     },
     "fieldname": {
       "type": "SYMBOL",
@@ -711,6 +653,27 @@
       "type": "STRING",
       "value": "null"
     },
+    "patchVersion": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "^"
+              },
+              {
+                "type": "PATTERN",
+                "value": ".*"
+              }
+            ]
+          }
+        ]
+      }
+    },
     "comment": {
       "type": "TOKEN",
       "content": {
@@ -741,9 +704,20 @@
     {
       "type": "SYMBOL",
       "name": "comment"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "patchVersion"
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "object"
+    ],
+    [
+      "array"
+    ]
+  ],
   "precedences": [],
   "externals": [],
   "inline": [],

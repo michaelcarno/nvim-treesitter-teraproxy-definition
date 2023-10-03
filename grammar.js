@@ -1,9 +1,11 @@
 module.exports = grammar({
-  name: "TERA_DEFINITIONS",
+  name: "teraonline_definitions",
 
-  extras: ($) => [/\s/, $.comment],
+  extras: ($) => [/\s/, $.comment, $.patchVersion],
 
   supertypes: ($) => [$._value],
+
+  conflicts: ($) => [[$.object], [$.array]],
 
   rules: {
     document: ($) => repeat($._value),
@@ -12,8 +14,8 @@ module.exports = grammar({
       choice(
         $.object,
         $.array,
-        $.simple_array,
-        $.simple_data,
+        $.simpleArray,
+        $.simpleField,
         // $.number,
         // $.fieldname,
         // $.true,
@@ -26,23 +28,23 @@ module.exports = grammar({
         // "{", commaSep($.pair), "}"
         "object",
         $.identifier,
-        fieldInEntyty($.pair),
+        fieldInEntyty($._value),
       ),
 
-    simple_data: ($) => seq($._types, $.identifier),
+    // simple_data: ($) => seq($._types, $.identifier),
     // simple_data: ($) => choice($.string, $.number, $.boolean),
 
-    pair: ($) => seq(field("key", $._types), field("value", $.identifier)),
+    simpleField: ($) => seq($._simpleTypes, $.identifier),
 
     array: ($) =>
       seq(
         "array",
         // typeTemplate($._type),
         $.identifier,
-        fieldInEntyty($.pair),
+        fieldInEntyty($._value),
       ),
 
-    simple_array: ($) => seq("array", "<", $._simpleTypes, ">", $.identifier),
+    simpleArray: ($) => seq("array", "<", $._simpleTypes, ">", $.identifier),
 
     // string: ($) => choice(seq('"', '"'), seq('"', $.string_content, '"')),
 
@@ -50,26 +52,31 @@ module.exports = grammar({
 
     _simpleTypes: ($) =>
       choice(
+        "int16",
         "int32",
         "int64",
         "float",
         "bool",
         "string",
         "double",
-        "uint64",
+        "uint16",
         "uint32",
+        "uint64",
+        "bytes",
+        "byte",
+        "customize",
+        "shape",
       ),
 
-    _types: ($) =>
-      prec(
-        -1,
-        choice(
-          $._simpleTypes,
-          "object",
-          "array",
-          seq("array", optional(seq("<", $._simpleTypes, ">"))),
-        ),
-      ),
+    // types: ($) => choice(),
+    // $._simpleTypes,
+    // "object",
+    // "array",
+    // seq("array", optional(seq("<", $._simpleTypes, ">"))),
+    // $.pair,
+    // $.object,
+    // $.array,
+    // $.simplearray,
 
     fieldname: ($) => $.identifier,
 
@@ -117,12 +124,14 @@ module.exports = grammar({
 
     null: ($) => "null",
 
+    patchVersion: ($) => token(choice(seq("^", /.*/))),
+
     comment: ($) => token(choice(seq("#", /.*/))),
   },
 });
 
 function fieldInEntyty(rule) {
-  return optional(repeat(seq("- ", rule)));
+  return repeat1(seq(repeat1("-"), rule));
 }
 
 // function commaSep1(rule) {

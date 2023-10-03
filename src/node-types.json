@@ -12,11 +12,11 @@
         "named": true
       },
       {
-        "type": "simple_array",
+        "type": "simpleArray",
         "named": true
       },
       {
-        "type": "simple_data",
+        "type": "simpleField",
         "named": true
       }
     ]
@@ -30,11 +30,11 @@
       "required": true,
       "types": [
         {
-          "type": "identifier",
+          "type": "_value",
           "named": true
         },
         {
-          "type": "pair",
+          "type": "identifier",
           "named": true
         }
       ]
@@ -64,88 +64,18 @@
       "required": true,
       "types": [
         {
-          "type": "identifier",
+          "type": "_value",
           "named": true
         },
         {
-          "type": "pair",
+          "type": "identifier",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "pair",
-    "named": true,
-    "fields": {
-      "key": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "<",
-            "named": false
-          },
-          {
-            "type": ">",
-            "named": false
-          },
-          {
-            "type": "array",
-            "named": false
-          },
-          {
-            "type": "bool",
-            "named": false
-          },
-          {
-            "type": "double",
-            "named": false
-          },
-          {
-            "type": "float",
-            "named": false
-          },
-          {
-            "type": "int32",
-            "named": false
-          },
-          {
-            "type": "int64",
-            "named": false
-          },
-          {
-            "type": "object",
-            "named": false
-          },
-          {
-            "type": "string",
-            "named": false
-          },
-          {
-            "type": "uint32",
-            "named": false
-          },
-          {
-            "type": "uint64",
-            "named": false
-          }
-        ]
-      },
-      "value": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "simple_array",
+    "type": "simpleArray",
     "named": true,
     "fields": {},
     "children": {
@@ -160,7 +90,7 @@
     }
   },
   {
-    "type": "simple_data",
+    "type": "simpleField",
     "named": true,
     "fields": {},
     "children": {
@@ -175,7 +105,7 @@
     }
   },
   {
-    "type": "- ",
+    "type": "-",
     "named": false
   },
   {
@@ -195,8 +125,20 @@
     "named": false
   },
   {
+    "type": "byte",
+    "named": false
+  },
+  {
+    "type": "bytes",
+    "named": false
+  },
+  {
     "type": "comment",
     "named": true
+  },
+  {
+    "type": "customize",
+    "named": false
   },
   {
     "type": "double",
@@ -215,6 +157,10 @@
     "named": true
   },
   {
+    "type": "int16",
+    "named": false
+  },
+  {
     "type": "int32",
     "named": false
   },
@@ -227,7 +173,19 @@
     "named": false
   },
   {
+    "type": "patchVersion",
+    "named": true
+  },
+  {
+    "type": "shape",
+    "named": false
+  },
+  {
     "type": "string",
+    "named": false
+  },
+  {
+    "type": "uint16",
     "named": false
   },
   {
