@@ -196,10 +196,6 @@
         }
       ]
     },
-    "types": {
-      "type": "CHOICE",
-      "members": []
-    },
     "fieldname": {
       "type": "SYMBOL",
       "name": "identifier"
