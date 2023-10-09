@@ -1,9 +1,9 @@
-object passivitySets
-- object passivitySets
-- - object passivitySets
+object object1
+- object object2
+- - array array1
 - - - int32 index
-- - - int32 index
-float  maxItemLevel ^114
+- - - int32 index2
+float  someFieldWithPatchVersion ^114
 
 
 

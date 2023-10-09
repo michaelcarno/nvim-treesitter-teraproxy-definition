@@ -19,5 +19,7 @@ parser_config.teraonline_definitions = {
   filetype = "def",                                         -- if filetype does not match the parser name
 }
 ```
+Sample of highlight:
+
 ![Sample](./tera-proxy-difinition-sample.jpg)
 
