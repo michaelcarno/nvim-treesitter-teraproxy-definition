@@ -66,6 +66,9 @@ module.exports = grammar({
         "byte",
         "customize",
         "shape",
+        "vec3",
+        "angle",
+        "skillid",
       ),
 
     // types: ($) => choice(),

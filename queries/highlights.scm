@@ -13,7 +13,11 @@
 "customize" 
 "shape" 
 "array"
-"object"] @type
+"object"
+"vec3"
+"angle"
+"skillid"
+] @type
 
 
 ; (object) @type
