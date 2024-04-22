@@ -193,6 +193,26 @@
         {
           "type": "STRING",
           "value": "shape"
+        },
+        {
+          "type": "STRING",
+          "value": "vec3"
+        },
+        {
+          "type": "STRING",
+          "value": "angle"
+        },
+        {
+          "type": "STRING",
+          "value": "skillid"
+        },
+        {
+          "type": "STRING",
+          "value": "offset"
+        },
+        {
+          "type": "STRING",
+          "value": "count"
         }
       ]
     },

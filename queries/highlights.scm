@@ -17,6 +17,8 @@
 "vec3"
 "angle"
 "skillid"
+"offset"
+"count"
 ] @type
 
 

@@ -69,6 +69,8 @@ module.exports = grammar({
         "vec3",
         "angle",
         "skillid",
+        "offset",
+        "count",
       ),
 
     // types: ($) => choice(),
